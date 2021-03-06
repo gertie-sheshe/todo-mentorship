@@ -11,6 +11,12 @@ const useStyles = makeStyles({
     right: 0,
     margin: "auto",
   },
+  table: {
+    minWidth: "200px",
+  },
+  paper: {
+    marginBottom: "40px",
+  },
 });
 
 export default useStyles;
