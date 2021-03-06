@@ -1,6 +1,7 @@
 import todoItems from "./todos";
 const INITIAL_STATE = todoItems;
 
+// DO NOT FILTER IN REDUCER
 const todosReducer = (state = INITIAL_STATE, action = {}) => {
   switch (action.type) {
     case "FETCH_ALL_TODOS":
