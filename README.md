@@ -1,6 +1,7 @@
 # Simple React ToDo App
 
-App for mentoring beginners on Front End. Very cliche to do app. The goal is to add more features + make any changes that the app needs
+App for mentoring beginners on Front End. Very cliche to do app. The goal is to add more features + make any changes that the app needs.
+Technologies: React, Redux, Reselet, Material-UI for styling.
 
 Features Available
 
