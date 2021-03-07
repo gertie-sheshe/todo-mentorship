@@ -5,10 +5,18 @@ export const fetchTodos = () => ({
   payload: null,
 });
 
-export const fetchAllActive = () => ({
-  type: actionTypes.ALL_ACTIVE_TODOS,
-});
+export const createTodo = (todo) => {
+  return {
+    type: actionTypes.CREATE_NEW_TODO,
+    payload: {
+      id: Math.random(1000),
+      name: todo,
+      status: "active",
+      completed: false,
+    },
+  };
+};
 
-export const clearCompleted = () => ({
-  type: actionTypes.ALL_COMPLETED_TODOS,
-});
+// export const clearCompleted = () => ({
+//   type: actionTypes.ALL_COMPLETED_TODOS,
+// });
