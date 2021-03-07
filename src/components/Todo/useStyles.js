@@ -16,6 +16,18 @@ const useStyles = makeStyles({
   },
   paper: {
     marginBottom: "40px",
+    marginTop: "20px",
+  },
+  button: {
+    marginLeft: "10px",
+  },
+  input: {
+    backgroundColor: "white",
+  },
+  active: {},
+  inactive: {
+    backgroundColor: "gray",
+    textDecoration: "line-through",
   },
 });
 

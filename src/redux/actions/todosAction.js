@@ -17,6 +17,7 @@ export const createTodo = (todo) => {
   };
 };
 
-// export const clearCompleted = () => ({
-//   type: actionTypes.ALL_COMPLETED_TODOS,
-// });
+export const toggleTodoState = (todo) => ({
+  type: actionTypes.TOGGLE_TODO,
+  payload: todo,
+});

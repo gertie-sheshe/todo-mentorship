@@ -19,11 +19,17 @@ import {
   clearCompleteTodos,
   fetchTodos,
 } from "../../redux/selectors/todosSelector";
-import { createTodo } from "../../redux/actions/todosAction";
+import { createTodo, toggleTodoState } from "../../redux/actions/todosAction";
 
 import useStyles from "./useStyles";
 
-const Todo = ({ fetchAllComplete, createTodo, todos, fetchAllActive }) => {
+const Todo = ({
+  fetchAllComplete,
+  createTodo,
+  toggleTodoState,
+  todos,
+  fetchAllActive,
+}) => {
   const classes = useStyles();
   const [todosArr, setTodos] = useState(todos);
   const [todo, setTodo] = useState("");
@@ -48,10 +54,14 @@ const Todo = ({ fetchAllComplete, createTodo, todos, fetchAllActive }) => {
     createTodo(todo);
   };
 
+  const toggleTodo = (todo) => {
+    toggleTodoState(todo);
+  };
+
   return (
     <>
       <Grid className={classes.root}>
-        <Grid>
+        <Grid container justify="center">
           <FormControl>
             <form onSubmit={newTodo}>
               <InputLabel htmlFor="todo-input">Add Todo</InputLabel>
@@ -59,9 +69,14 @@ const Todo = ({ fetchAllComplete, createTodo, todos, fetchAllActive }) => {
                 id="todo-input"
                 aria-describedby="todo-helper"
                 value={todo}
+                className={classes.input}
                 onChange={(e) => setTodo(e.target.value)}
               ></Input>
-              <Button type="submit" variant="contained">
+              <Button
+                className={classes.button}
+                type="submit"
+                variant="contained"
+              >
                 Add
               </Button>
             </form>
@@ -73,11 +88,21 @@ const Todo = ({ fetchAllComplete, createTodo, todos, fetchAllActive }) => {
               <TableBody>
                 {todosArr &&
                   todosArr.map((todo) => (
-                    <TableRow key={todo.id}>
+                    <TableRow
+                      className={
+                        todo.completed ? classes.inactive : classes.active
+                      }
+                      onClick={() => toggleTodo(todo)}
+                      key={todo.id}
+                    >
                       <TableCell component="th" scope="row">
                         {todo.name}
                       </TableCell>
-                      <TableCell align="right">{todo.status}</TableCell>
+                      {todo.completed ? (
+                        <TableCell align="right">inactive</TableCell>
+                      ) : (
+                        <TableCell align="right">active</TableCell>
+                      )}
                     </TableRow>
                   ))}
               </TableBody>
@@ -85,14 +110,26 @@ const Todo = ({ fetchAllComplete, createTodo, todos, fetchAllActive }) => {
           </TableContainer>
         </Grid>
         <Grid>
-          <Button variant="contained" onClick={viewAll}>
+          <Button
+            className={classes.button}
+            variant="contained"
+            onClick={viewAll}
+          >
             View All
           </Button>
-          <Button variant="contained" onClick={filterActive}>
+          <Button
+            className={classes.button}
+            variant="contained"
+            onClick={filterActive}
+          >
             Active
           </Button>
-          <Button variant="contained" onClick={filterComplete}>
-            Clear Completed
+          <Button
+            className={classes.button}
+            variant="contained"
+            onClick={filterComplete}
+          >
+            Completed
           </Button>
         </Grid>
       </Grid>
@@ -106,4 +143,4 @@ const mapStateToProps = createStructuredSelector({
   todos: fetchTodos,
 });
 
-export default connect(mapStateToProps, { createTodo })(Todo);
+export default connect(mapStateToProps, { createTodo, toggleTodoState })(Todo);

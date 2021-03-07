@@ -8,9 +8,9 @@ function App() {
 
   return (
     <>
-      <Grid className={`${classes.root} ${classes.bgroundTop}`}>ONE</Grid>
+      <Grid className={`${classes.root} ${classes.bgroundTop}`}></Grid>
       <Todo />
-      <Grid className={classes.bgroundBottom}>TWO</Grid>
+      <Grid className={classes.bgroundBottom}></Grid>
     </>
   );
 }

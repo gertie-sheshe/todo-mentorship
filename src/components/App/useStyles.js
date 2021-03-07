@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
-  root: { backgroundColor: "#6E2184" },
+  root: { backgroundImage: "linear-gradient(to right, #3F2BB2, #711D7A)" },
   bgroundTop: {
     height: "30vh",
   },

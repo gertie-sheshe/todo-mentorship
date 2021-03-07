@@ -3,8 +3,7 @@ import { createSelector } from "reselect";
 export const fetchTodos = (state) => state.todos;
 
 export const fetchtActiveTodos = (state) => {
-  console.log("TESST", state);
-  return state.todos.filter((todo) => todo.status === "active");
+  return state.todos.filter((todo) => todo.completed === false);
 };
 
 export const clearCompleteTodos = (state) =>
